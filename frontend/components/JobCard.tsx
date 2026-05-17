@@ -22,39 +22,39 @@ export default function JobCard({ job }: { job: Job }) {
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow p-6 h-full flex flex-col justify-between">
+    <div className="bg-white rounded-2xl shadow-sm border border-slate-200/80 hover:shadow-lg hover:border-indigo-200 transition-all duration-300 p-6 h-full flex flex-col justify-between group">
       <div>
         <div className="flex items-start justify-between mb-3">
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 break-words">{job.title}</h3>
-            <span className="inline-block mt-1 px-2 py-1 bg-blue-50 text-blue-700 text-xs font-medium rounded">
+            <h3 className="text-lg font-bold text-slate-900 break-words group-hover:text-indigo-600 transition-colors">{job.title}</h3>
+            <span className="inline-block mt-2 px-2.5 py-1 bg-indigo-50 text-indigo-700 text-xs font-semibold rounded-md border border-indigo-100">
               {job.category}
             </span>
           </div>
         </div>
         
-        <p className="text-gray-600 text-sm line-clamp-2 mb-4 break-words">{job.description}</p>
+        <p className="text-slate-600 text-sm line-clamp-2 mb-5 break-words leading-relaxed">{job.description}</p>
         
-        <div className="space-y-2 text-sm text-gray-600">
+        <div className="space-y-2.5 text-sm text-slate-600 font-medium">
           <div className="flex items-center gap-2">
-            <MapPin className="w-4 h-4 text-gray-400" />
+            <MapPin className="w-4 h-4 text-slate-400" />
             {job.location}
           </div>
           {job.budget && (
             <div className="flex items-center gap-2">
-              <DollarSign className="w-4 h-4 text-gray-400" />
+              <DollarSign className="w-4 h-4 text-slate-400" />
               ${job.budget}
             </div>
           )}
         </div>
       </div>
       
-      <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-100">
-        <div className="flex items-center gap-1 text-xs text-gray-500">
-          <Clock className="w-3 h-3" />
+      <div className="flex items-center justify-between mt-5 pt-5 border-t border-slate-100">
+        <div className="flex items-center gap-1.5 text-xs text-slate-500 font-medium">
+          <Clock className="w-3.5 h-3.5" />
           {job.postedAt ? formatDate(job.postedAt) : 'Recently posted'}
         </div>
-        <Link href={`/job/${job._id}`} className="px-3 py-1 bg-blue-600 text-white text-sm font-medium rounded hover:bg-blue-700 transition-colors">
+        <Link href={`/job/${job._id}`} className="px-4 py-1.5 bg-indigo-50 text-indigo-700 hover:bg-indigo-600 hover:text-white text-sm font-semibold rounded-lg transition-colors duration-200">
           View
         </Link>
       </div>

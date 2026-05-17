@@ -20,19 +20,19 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-gray-100">
+    <nav className="bg-white/70 backdrop-blur-xl shadow-sm sticky top-0 z-50 border-b border-slate-200/60 transition-all duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
           <div className="flex items-center gap-2">
-            <Wrench className="h-6 w-6 text-blue-600" />
-            <Link href="/" className="text-xl font-bold text-gray-900 tracking-tight">
+            <Wrench className="h-6 w-6 text-indigo-600 drop-shadow-sm" />
+            <Link href="/" className="text-xl font-bold bg-gradient-to-r from-indigo-700 to-violet-600 bg-clip-text text-transparent tracking-tight">
               ServiceBoard
             </Link>
           </div>
           <div className="flex items-center space-x-4">
             <Link
               href="/"
-              className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+              className="text-slate-600 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
             >
               Jobs
             </Link>
@@ -41,13 +41,13 @@ export default function Navbar() {
               <>
                 <Link
                   href="/new"
-                  className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all shadow-sm hover:shadow-md active:scale-95"
+                  className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5 active:translate-y-0"
                 >
                   + Post Job
                 </Link>
                 <button
                   onClick={handleLogout}
-                  className="text-red-600 hover:text-red-800 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                  className="text-rose-500 hover:text-rose-700 px-3 py-2 rounded-md text-sm font-medium transition-colors"
                 >
                   Logout
                 </button>
@@ -55,7 +55,7 @@ export default function Navbar() {
             ) : (
               <Link
                 href="/login"
-                className="text-blue-600 hover:text-blue-800 px-3 py-2 rounded-md text-sm font-medium transition-colors border border-blue-200 hover:bg-blue-50"
+                className="text-indigo-600 hover:text-indigo-700 px-4 py-2 rounded-lg text-sm font-medium transition-colors border border-indigo-200 hover:bg-indigo-50"
               >
                 Login
               </Link>

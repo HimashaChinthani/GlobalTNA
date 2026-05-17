@@ -33,9 +33,9 @@ export default function NewJob() {
 
   return (
     <div className="max-w-2xl mx-auto animate-in fade-in zoom-in-95 duration-300">
-      <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
-        <h1 className="text-2xl font-bold text-gray-900 mb-2">Post a Service Request</h1>
-        <p className="text-gray-500 mb-8 text-sm">Fill out the details below to find the right tradesperson for your job.</p>
+      <div className="bg-white/70 backdrop-blur-md rounded-3xl shadow-sm border border-slate-200 p-8 sm:p-10">
+        <h1 className="text-3xl font-extrabold text-slate-900 mb-3 tracking-tight">Post a Service Request</h1>
+        <p className="text-slate-500 mb-8 text-sm">Fill out the details below to find the right tradesperson for your job.</p>
         
         {error && (
           <div className="bg-red-50 text-red-700 p-4 rounded-lg mb-6 text-sm">
@@ -45,21 +45,21 @@ export default function NewJob() {
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Job Title *</label>
+            <label className="block text-sm font-semibold text-slate-700 mb-1.5">Job Title <span className="text-rose-500">*</span></label>
             <input
               {...register('title', { required: 'Title is required' })}
-              className={`w-full px-4 py-2 rounded-lg border ${errors.title ? 'border-red-500 focus:ring-red-200' : 'border-gray-200 focus:border-blue-500 focus:ring-blue-200'} transition-all outline-none focus:ring-4`}
+              className={`w-full px-4 py-2.5 rounded-xl border ${errors.title ? 'border-rose-300 focus:border-rose-500 focus:ring-rose-200' : 'border-slate-200 focus:border-indigo-500 focus:ring-indigo-100'} transition-all outline-none focus:ring-4 bg-white/50 focus:bg-white`}
               placeholder="e.g. Leaking kitchen tap"
             />
             {errors.title && <p className="text-red-500 text-xs mt-1">{errors.title.message}</p>}
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Description *</label>
+            <label className="block text-sm font-semibold text-slate-700 mb-1.5">Description <span className="text-rose-500">*</span></label>
             <textarea
               {...register('description', { required: 'Description is required' })}
               rows={4}
-              className={`w-full px-4 py-2 rounded-lg border ${errors.description ? 'border-red-500 focus:ring-red-200' : 'border-gray-200 focus:border-blue-500 focus:ring-blue-200'} transition-all outline-none focus:ring-4`}
+              className={`w-full px-4 py-3 rounded-xl border ${errors.description ? 'border-rose-300 focus:border-rose-500 focus:ring-rose-200' : 'border-slate-200 focus:border-indigo-500 focus:ring-indigo-100'} transition-all outline-none focus:ring-4 bg-white/50 focus:bg-white resize-none`}
               placeholder="Describe the issue in detail..."
             />
             {errors.description && <p className="text-red-500 text-xs mt-1">{errors.description.message}</p>}
@@ -67,10 +67,10 @@ export default function NewJob() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Category *</label>
+              <label className="block text-sm font-semibold text-slate-700 mb-1.5">Category <span className="text-rose-500">*</span></label>
               <select
                 {...register('category', { required: 'Category is required' })}
-                className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-200 transition-all outline-none bg-white"
+                className="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100 transition-all outline-none bg-white/50 focus:bg-white"
               >
                 <option value="">Select category...</option>
                 <option value="Plumbing">Plumbing</option>
@@ -79,34 +79,34 @@ export default function NewJob() {
                 <option value="Joinery">Joinery</option>
                 <option value="Other">Other</option>
               </select>
-              {errors.category && <p className="text-red-500 text-xs mt-1">{errors.category.message}</p>}
+              {errors.category && <p className="text-rose-500 text-xs mt-1">{errors.category.message}</p>}
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Location *</label>
+              <label className="block text-sm font-semibold text-slate-700 mb-1.5">Location <span className="text-rose-500">*</span></label>
               <input
                 {...register('location', { required: 'Location is required' })}
-                className={`w-full px-4 py-2 rounded-lg border ${errors.location ? 'border-red-500 focus:ring-red-200' : 'border-gray-200 focus:border-blue-500 focus:ring-blue-200'} transition-all outline-none focus:ring-4`}
+                className={`w-full px-4 py-2.5 rounded-xl border ${errors.location ? 'border-rose-300 focus:border-rose-500 focus:ring-rose-200' : 'border-slate-200 focus:border-indigo-500 focus:ring-indigo-100'} transition-all outline-none focus:ring-4 bg-white/50 focus:bg-white`}
                 placeholder="e.g. Glasgow"
               />
               {errors.location && <p className="text-red-500 text-xs mt-1">{errors.location.message}</p>}
             </div>
           </div>
 
-          <hr className="border-gray-100" />
+          <hr className="border-slate-100" />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Your Name</label>
+              <label className="block text-sm font-semibold text-slate-700 mb-1.5">Your Name</label>
               <input
                 {...register('contactName')}
-                className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-200 transition-all outline-none"
+                className="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100 transition-all outline-none bg-white/50 focus:bg-white"
                 placeholder="John Doe"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Email Address *</label>
+              <label className="block text-sm font-semibold text-slate-700 mb-1.5">Email Address <span className="text-rose-500">*</span></label>
               <input
                 {...register('contactEmail', { 
                   required: 'Email is required',
@@ -115,25 +115,25 @@ export default function NewJob() {
                     message: "invalid email address"
                   }
                 })}
-                className={`w-full px-4 py-2 rounded-lg border ${errors.contactEmail ? 'border-red-500 focus:ring-red-200' : 'border-gray-200 focus:border-blue-500 focus:ring-blue-200'} transition-all outline-none focus:ring-4`}
+                className={`w-full px-4 py-2.5 rounded-xl border ${errors.contactEmail ? 'border-rose-300 focus:border-rose-500 focus:ring-rose-200' : 'border-slate-200 focus:border-indigo-500 focus:ring-indigo-100'} transition-all outline-none focus:ring-4 bg-white/50 focus:bg-white`}
                 placeholder="john@example.com"
               />
               {errors.contactEmail && <p className="text-red-500 text-xs mt-1">{errors.contactEmail.message}</p>}
             </div>
           </div>
 
-          <div className="pt-4 flex justify-end gap-3">
+          <div className="pt-6 flex justify-end gap-4">
             <button
               type="button"
               onClick={() => router.back()}
-              className="px-6 py-2 rounded-lg text-gray-600 hover:bg-gray-100 font-medium transition-colors"
+              className="px-6 py-2.5 rounded-xl text-slate-600 hover:bg-slate-100 font-semibold transition-colors"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={isSubmitting}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium transition-all shadow-sm flex items-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
+              className="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-2.5 rounded-xl font-semibold transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 flex items-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
             >
               {isSubmitting && <Loader2 className="w-4 h-4 animate-spin" />}
               Post Request
