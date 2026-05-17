@@ -15,6 +15,9 @@ mongoose.connect(process.env.MONGODB_URI)
   .catch(err => console.error('Database connection error:', err));
 
 // Routes
+app.get('/', (req, res) => {
+  res.json({ message: 'ServiceBoard API is running successfully on Vercel!' });
+});
 app.use('/api/auth', authRoutes);
 app.use('/api/jobs', jobRoutes);
 
@@ -27,5 +30,8 @@ app.use((err, req, res, next) => {
   });
 });
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+if (process.env.VERCEL !== '1') {
+  const PORT = process.env.PORT || 5000;
+  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+}
+module.exports = app;

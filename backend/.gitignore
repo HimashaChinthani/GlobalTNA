@@ -3,3 +3,4 @@ node_modules
 .env.local
 .DS_Store
 2.  **Push to GitHub**: Create a new public repository and push your code.
+.vercel
