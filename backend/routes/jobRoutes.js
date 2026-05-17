@@ -1,14 +1,21 @@
 const express = require('express');
 const router = express.Router();
 const JobRequest = require('../models/JobRequest');
+const authMiddleware = require('../middleware/auth');
 
 // GET /api/jobs - List with optional filters [cite: 26]
 router.get('/', async (req, res, next) => {
   try {
-    const { category, status } = req.query;
+    const { category, status, search } = req.query;
     let query = {};
     if (category) query.category = category;
     if (status) query.status = status;
+    if (search) {
+      query.$or = [
+        { title: { $regex: search, $options: 'i' } },
+        { description: { $regex: search, $options: 'i' } }
+      ];
+    }
     
     const jobs = await JobRequest.find(query).sort({ createdAt: -1 });
     res.json(jobs);
@@ -25,7 +32,7 @@ router.get('/:id', async (req, res, next) => {
 });
 
 // POST /api/jobs - Create [cite: 28]
-router.post('/', async (req, res, next) => {
+router.post('/', authMiddleware, async (req, res, next) => {
   try {
     const newJob = new JobRequest(req.body);
     await newJob.save();
@@ -47,7 +54,7 @@ router.patch('/:id', async (req, res, next) => {
 });
 
 // DELETE /api/jobs/:id - Delete [cite: 30]
-router.delete('/:id', async (req, res, next) => {
+router.delete('/:id', authMiddleware, async (req, res, next) => {
   try {
     const job = await JobRequest.findByIdAndDelete(req.params.id);
     if (!job) return res.status(404).json({ message: 'Job not found' });
